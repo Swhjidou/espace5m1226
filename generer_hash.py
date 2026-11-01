@@ -14,7 +14,6 @@ while True:
     empreinte = hashlib.sha256(f"{SEL}:{nom}:{mdp}".encode("utf-8")).hexdigest()
     print(f'\n"{nom}": "{empreinte}",\n')
 
-# Code: Toujounin 1
-# 5DG1 => 2027-2026=1
-# 5DF2 => 2026+1=2027
-# 5CF2 => 2026-2027=-1
+# Code: Elmourad
+
+# 5CG2 => 2026-2027=-1

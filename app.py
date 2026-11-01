@@ -3,8 +3,8 @@ import os
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
 
-URL = "https://espace5t1226.netlify.app/"
-TEXTE = "Prof: Elbou Sidi Ahmed\nClasse: 5C/D"  # texte écrit AU CENTRE du QR code
+URL = "https://espace5m1226.netlify.app/"
+TEXTE = "Prof: Elbou Sidi Ahmed\nClasse: 5CG4"  # texte écrit AU CENTRE du QR code
 DOSSIER = "static/images"
 FICHIER = os.path.join(DOSSIER, "qr_code.png")
 

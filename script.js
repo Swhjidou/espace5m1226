@@ -5,9 +5,7 @@
 // il décourage les curieux mais ne remplace pas une vraie authentification serveur.
 const SEL = "espace-eleve-2027";
 const IDENTIFIANTS = {
-    "5DF2": "2ea5df57f1d1f0dc2d0512ec9f4a554e87c356300f5788248179b078379e5aac",
-    "5CF2": "1af5289182699b7a95a708be5cf11674d12f960e245d72a7814f91ff5f0e74ab",
-    "5DG1": "5daff62c8bc22a8975380a54f4a14d9c0f1ece79e8314d5e7f7ee98046e83e39",
+    "5CG4": "1af5289182699b7a95a708be5cf11674d12f960e245d72a7814f91ff5f0e74ab",
     "SWH": "8eff4fa48e86b3e0c71aaed8360e26d49b1d675b518dcb04e76ff635ccbee452",
 };
 const COMPTE_ADMIN = "AMI";
