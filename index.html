@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Élève</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="screenshotWarning" class="screenshot-warning">⚠️ Action non autorisée</div>
+
+    <!-- ===== CONTENU (visible après connexion) ===== -->
+    <div id="contenu-page" style="display: none;">
+        <h1>Espace des eleves</h1>
+
+        <div class="ribbon-container">
+            <div class="ribbon">
+                <button class="tab-button active" onclick="ouvrirOnglet(event, 'accueil')">
+                    <span class="class-number">🏠</span>
+                    <span class="class-label">Accueil</span>
+                </button>
+
+                <button class="tab-button" onclick="ouvrirOnglet(event, 'classe5')">
+                    <span class="class-label">Classe 5C/D</span>
+                </button>
+
+                <button class="tab-button" onclick="ouvrirOnglet(event, 'classe6')">
+                    <span class="class-label">Classe 6C/D</span>
+                </button>
+
+                <button class="tab-button" onclick="ouvrirOnglet(event, 'classe7')">
+                    <span class="class-label">Classe 7C/D</span>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- ===== ONGLET ACCUEIL ===== -->
+        <div id="accueil" class="tab-content" style="display: block;">
+            <div class="welcome-card">
+                <h3 id="messageBienvenue">Bonjour ! 👋</h3>
+                <p>
+                    Sélectionnez <strong>Classe 5C/D</strong> pour voir les contenus.
+                </p>
+                <ul class="instructions-list">
+                    <li>Cliquez sur une classe ci-dessus.</li>
+                    <li>Ouvrez un dossier pour voir son contenu.</li>
+                    <li>Cliquez sur une image pour l'agrandir.</li>
+                </ul>
+
+                <!-- Statistiques (visibles uniquement pour le compte "Ami") -->
+                <div id="visitorStatsContainer" class="visitor-stats" style="display: none;">
+                    <h4>📊 Statistiques de visite</h4>
+                    <div class="visitor-number" id="visitorCounter">0</div>
+                    <div class="visitor-label">connexions sur cet appareil</div>
+                    <div class="visitor-last" id="lastVisitorInfo">Aucune connexion pour le moment</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ONGLET CLASSE 5C/D ===== -->
+        <div id="classe5" class="tab-content" style="display: none;">
+
+            <!-- Vue 1 : les dossiers -->
+            <div id="vueDossiers">
+                <h3 class="section-title">Classe 5C/D</h3>
+                <div class="folders-grid">
+
+                    <!-- Dossier docs -->
+                    <button type="button" class="folder" onclick="ouvrirDossier('docs')">
+                        <div class="folder-icon">
+                            <div class="folder-back"></div>
+                            <div class="folder-paper">
+                                <span class="paper-lines"></span>
+                                <span class="paper-pdf"></span>
+                            </div>
+                            <div class="folder-front"></div>
+                        </div>
+                        <span class="folder-name">docs</span>
+                    </button>
+
+                    <!-- Dossier images (aperçu = première image) -->
+                    <button type="button" class="folder" onclick="ouvrirDossier('images')">
+                        <div class="folder-icon">
+                            <div class="folder-back"></div>
+                            <div class="folder-paper">
+                                <img src="static/images/S1PFOETC_001.jpg" alt="" draggable="false">
+                            </div>
+                            <div class="folder-front"></div>
+                        </div>
+                        <span class="folder-name">images</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Vue 2 : contenu du dossier images -->
+            <div id="dossier-images" class="dossier-vue" style="display: none;">
+                <button type="button" class="back-btn" onclick="retourDossiers()">← Retour</button>
+                <h3 class="section-title">📁 images</h3>
+                <div class="gallery">
+                    <div class="image-container">
+                        <img src="static/images/S1PFOETC_001.jpg" alt="Série 1 Page 1"
+                             onclick="ouvrirPleinEcran(0, 'classe5')"
+                             data-id="classe5_img1" draggable="false">
+                        <div class="view_counter" id="counter_classe5_img1">0</div>
+                    </div>
+
+                    <div class="image-container">
+                        <img src="static/images/S1PFOETC_002.jpg" alt="Série 1 Page 2"
+                             onclick="ouvrirPleinEcran(1, 'classe5')"
+                             data-id="classe5_img2" draggable="false">
+                        <div class="view_counter" id="counter_classe5_img2">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vue 3 : contenu du dossier docs -->
+            <div id="dossier-docs" class="dossier-vue" style="display: none;">
+                <button type="button" class="back-btn" onclick="retourDossiers()">← Retour</button>
+                <h3 class="section-title">📁 docs</h3>
+                <div id="documents" class="docs-grid"></div>
+            </div>
+
+        </div>
+                <!-- ===== ONGLET CLASSE 6C/D (accès refusé) ===== -->
+        <div id="classe6" class="tab-content" style="display: none;">
+            <div class="locked-card">
+                <div class="locked-icon">🔒</div>
+                <h3>Accès refusé</h3>
+                <p>Tu n'as pas l'autorisation d'accéder au contenu de la classe 6C/D.</p>
+            </div>
+        </div>
+
+        <!-- ===== ONGLET CLASSE 7C/D (accès refusé) ===== -->
+        <div id="classe7" class="tab-content" style="display: none;">
+            <div class="locked-card">
+                <div class="locked-icon">🔒</div>
+                <h3>Accès refusé</h3>
+                <p>Tu n'as pas l'autorisation d'accéder au contenu de la classe 7C/D.</p>
+            </div>
+        </div>
+
+        <!-- Fenêtre modale pour agrandir les photos -->
+        <div id="modele" class="modele" onclick="fermerPleinEcran()">
+            <span class="fermer" onclick="fermerPleinEcran()">&times;</span>
+            <img id="imageModele" class="modele-contenu" alt="" draggable="false">
+            <div class="nav-droite" onclick="event.stopPropagation(); photoSuivante()">&#10095;</div>
+            <div class="nav-gauche" onclick="event.stopPropagation(); photoPrecedente()">&#10094;</div>
+        </div>
+    </div>
+
+    <!-- ===== ÉCRAN DE CONNEXION ===== -->
+    <div class="login-container" id="verrouillage">
+        <div class="login-box">
+            <div class="login-icon">🎓</div>
+            <h2>Espace Élève</h2>
+            <p class="login-subtitle">Veuillez vous identifier</p>
+
+            <input type="text" id="fullName" placeholder="Nom de votre classe"
+                   autocomplete="off" autocapitalize="characters">
+
+            <input type="password" id="password" placeholder="Mot de passe"
+                   autocomplete="off">
+
+            <button id="btnConnexion" type="button">Se connecter</button>
+
+            <p id="erreur-code" class="erreur-code">Nom ou mot de passe incorrect.</p>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
