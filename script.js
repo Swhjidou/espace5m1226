@@ -5,10 +5,10 @@
 // il décourage les curieux mais ne remplace pas une vraie authentification serveur.
 const SEL = "espace-eleve-2027";
 const IDENTIFIANTS = {
-    "5CG4": "1af5289182699b7a95a708be5cf11674d12f960e245d72a7814f91ff5f0e74ab",
+    "5CG4": "b850c25467e8c318b8e087720815db5602cb09566881b5037a36edd0f4419af4",
     "SWH": "8eff4fa48e86b3e0c71aaed8360e26d49b1d675b518dcb04e76ff635ccbee452",
 };
-const COMPTE_ADMIN = "AMI";
+const COMPTE_ADMIN = "5CG4";
 const INACTIVITY_DELAY = 2 * 60 * 1000; // 2 minutes
 
 // ========== OUTILS ==========
